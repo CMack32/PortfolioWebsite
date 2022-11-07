@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ResponsiveAppBar from "./components/navBar.js";
+import "./App.css";
+import Home from "./components/home.js";
+import { createTheme, ThemeProvider } from "@material-ui/core";
+import PictureList from "./components/imageList.js";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#F1F2F3",
+    },
+    secondary: {
+      main: "#18161B",
+    },
+  },
+  typography: {
+    fontFamily: ["Oswald"],
+    h4: {
+      fontWeight: 600,
+      fontSize: 28,
+      lineHeight: "2rem",
+    },
+    h5: {
+      fontWeight: 100,
+      lineHeight: "2rem",
+    },
+  },
+});
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={theme}>
+        <ResponsiveAppBar />
+        <Home />
+      </ThemeProvider>
     </div>
   );
 }
